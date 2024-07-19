@@ -1,10 +1,12 @@
 /**
- * Taken from http://www.antlr3.org/grammar/1345144569663/AntlrUnicode.txt
+ * Kotlin lexical grammar in ANTLR4 notation (Unicode classes)
+ * Source:  https://github.com/Kotlin/kotlin-spec/blob/release/grammar/src/main/antlr/UnicodeClasses.g4
+ *
  */
 
 lexer grammar UnicodeClasses;
 
-fragment UNICODE_CLASS_LL:
+UNICODE_CLASS_LL:
 	'\u0061'..'\u007A' |
 	'\u00B5' |
 	'\u00DF'..'\u00F6' |
@@ -608,7 +610,7 @@ fragment UNICODE_CLASS_LL:
 	'\uFB13'..'\uFB17' |
 	'\uFF41'..'\uFF5A';
 
-fragment UNICODE_CLASS_LM:
+UNICODE_CLASS_LM:
 	'\u02B0'..'\u02C1' |
 	'\u02C6'..'\u02D1' |
 	'\u02E0'..'\u02E4' |
@@ -668,7 +670,7 @@ fragment UNICODE_CLASS_LM:
 	'\uFF9E' |
 	'\uFF9F';
 
-fragment UNICODE_CLASS_LO:
+UNICODE_CLASS_LO:
 	'\u00AA' |
 	'\u00BA' |
 	'\u01BB' |
@@ -994,7 +996,7 @@ fragment UNICODE_CLASS_LO:
 	'\uFFD2'..'\uFFD7' |
 	'\uFFDA'..'\uFFDC';
 
-fragment UNICODE_CLASS_LT:
+UNICODE_CLASS_LT:
 	'\u01C5' |
 	'\u01C8' |
 	'\u01CB' |
@@ -1006,7 +1008,7 @@ fragment UNICODE_CLASS_LT:
 	'\u1FCC' |
 	'\u1FFC';
 
-fragment UNICODE_CLASS_LU:
+UNICODE_CLASS_LU:
 	'\u0041'..'\u005A' |
 	'\u00C0'..'\u00D6' |
 	'\u00D8'..'\u00DE' |
@@ -1600,7 +1602,7 @@ fragment UNICODE_CLASS_LU:
 	'\uA7AA' |
 	'\uFF21'..'\uFF3A';
 
-fragment UNICODE_CLASS_ND:
+UNICODE_CLASS_ND:
 	'\u0030'..'\u0039' |
 	'\u0660'..'\u0669' |
 	'\u06F0'..'\u06F9' |
@@ -1637,7 +1639,7 @@ fragment UNICODE_CLASS_ND:
 	'\uABF0'..'\uABF9' |
 	'\uFF10'..'\uFF19';
 
-fragment UNICODE_CLASS_NL:
+UNICODE_CLASS_NL:
 	'\u16EE'..'\u16F0' |
 	'\u2160'..'\u2182' |
 	'\u2185'..'\u2188' |

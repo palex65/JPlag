@@ -60,7 +60,7 @@ fun main(args : Array<String>) {
         complete.get()
     }
     println(complete.getAccessCount())
-
+    repeat(2) { n -> println("Function Literal $n") }
     var int : Int = 0;
     loop@ while (true) {
         val box = Container(int);

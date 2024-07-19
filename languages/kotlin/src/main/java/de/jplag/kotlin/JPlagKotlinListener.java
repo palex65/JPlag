@@ -92,7 +92,8 @@ public class JPlagKotlinListener extends KotlinParserBaseListener {
 
     @Override
     public void enterPackageHeader(KotlinParser.PackageHeaderContext context) {
-        transformToken(PACKAGE, context.getStart(), context.getStop());
+        Token end = context.getStop(); // package header can be empty
+        if (end!=null) transformToken(PACKAGE, context.getStart(), end);
         super.enterPackageHeader(context);
     }
 
@@ -187,15 +188,15 @@ public class JPlagKotlinListener extends KotlinParserBaseListener {
     }
 
     @Override
-    public void enterInitBlock(KotlinParser.InitBlockContext context) {
+    public void enterBlock(KotlinParser.BlockContext context) {
         transformToken(INITIALIZER_BODY_START, context.getStart());
-        super.enterInitBlock(context);
+        super.enterBlock(context);
     }
 
     @Override
-    public void exitInitBlock(KotlinParser.InitBlockContext context) {
+    public void exitBlock(KotlinParser.BlockContext context) {
         transformToken(INITIALIZER_BODY_END, context.getStop());
-        super.exitInitBlock(context);
+        super.exitBlock(context);
     }
 
     @Override
@@ -247,15 +248,27 @@ public class JPlagKotlinListener extends KotlinParserBaseListener {
     }
 
     @Override
-    public void enterForExpression(KotlinParser.ForExpressionContext context) {
-        transformToken(FOR_EXPRESSION_BEGIN, context.getStart());
-        super.enterForExpression(context);
+    public void enterLambdaLiteral(KotlinParser.LambdaLiteralContext context) {
+        transformToken(FUNCTION_LITERAL_BEGIN, context.getStart());
+        super.enterLambdaLiteral(context);
     }
 
     @Override
-    public void exitForExpression(KotlinParser.ForExpressionContext context) {
+    public void exitLambdaLiteral(KotlinParser.LambdaLiteralContext context) {
+        transformToken(FUNCTION_LITERAL_END, context.getStop());
+        super.exitLambdaLiteral(context);
+    }
+
+    @Override
+    public void enterForStatement(KotlinParser.ForStatementContext context) {
+        transformToken(FOR_EXPRESSION_BEGIN, context.getStart());
+        super.enterForStatement(context);
+    }
+
+    @Override
+    public void exitForStatement(KotlinParser.ForStatementContext context) {
         transformToken(FOR_EXPRESSION_END, context.getStop());
-        super.exitForExpression(context);
+        super.exitForStatement(context);
     }
 
     @Override
@@ -271,27 +284,27 @@ public class JPlagKotlinListener extends KotlinParserBaseListener {
     }
 
     @Override
-    public void enterWhileExpression(KotlinParser.WhileExpressionContext context) {
+    public void enterWhileStatement(KotlinParser.WhileStatementContext context) {
         transformToken(WHILE_EXPRESSION_START, context.getStart());
-        super.enterWhileExpression(context);
+        super.enterWhileStatement(context);
     }
 
     @Override
-    public void exitWhileExpression(KotlinParser.WhileExpressionContext context) {
+    public void exitWhileStatement(KotlinParser.WhileStatementContext context) {
         transformToken(WHILE_EXPRESSION_END, context.getStop());
-        super.exitWhileExpression(context);
+        super.exitWhileStatement(context);
     }
 
     @Override
-    public void enterDoWhileExpression(KotlinParser.DoWhileExpressionContext context) {
+    public void enterDoWhileStatement(KotlinParser.DoWhileStatementContext context) {
         transformToken(DO_WHILE_EXPRESSION_START, context.getStart());
-        super.enterDoWhileExpression(context);
+        super.enterDoWhileStatement(context);
     }
 
     @Override
-    public void exitDoWhileExpression(KotlinParser.DoWhileExpressionContext context) {
+    public void exitDoWhileStatement(KotlinParser.DoWhileStatementContext context) {
         transformToken(DO_WHILE_EXPRESSION_END, context.getStop());
-        super.exitDoWhileExpression(context);
+        super.exitDoWhileStatement(context);
     }
 
     @Override
@@ -313,9 +326,9 @@ public class JPlagKotlinListener extends KotlinParserBaseListener {
     }
 
     @Override
-    public void enterCatchStatement(KotlinParser.CatchStatementContext context) {
+    public void enterCatchBlock(KotlinParser.CatchBlockContext context) {
         transformToken(CATCH, context.getStart());
-        super.enterCatchStatement(context);
+        super.enterCatchBlock(context);
     }
 
     @Override
@@ -331,9 +344,9 @@ public class JPlagKotlinListener extends KotlinParserBaseListener {
     }
 
     @Override
-    public void enterFinallyStatement(KotlinParser.FinallyStatementContext context) {
+    public void enterFinallyBlock(KotlinParser.FinallyBlockContext context) {
         transformToken(FINALLY, context.getStart());
-        super.enterFinallyStatement(context);
+        super.enterFinallyBlock(context);
     }
 
     @Override
@@ -397,9 +410,15 @@ public class JPlagKotlinListener extends KotlinParserBaseListener {
     }
 
     @Override
-    public void enterAssignmentOperator(KotlinParser.AssignmentOperatorContext context) {
+    public void enterAssignmentAndOperator(KotlinParser.AssignmentAndOperatorContext context) {
         transformToken(ASSIGNMENT, context.getStart());
-        super.enterAssignmentOperator(context);
+        super.enterAssignmentAndOperator(context);
+    }
+
+    @Override
+    public void enterAssignment(KotlinParser.AssignmentContext context) {
+        transformToken(ASSIGNMENT, context.getStart());
+        super.enterAssignment(context);
     }
 
     @Override

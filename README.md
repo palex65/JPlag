@@ -25,7 +25,7 @@ In the following, a list of all supported languages with their supported languag
 | [C/C++](https://isocpp.org)                            |      14 | cpp2              |                               beta                               |  ANTLR 4  |
 | [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)  |       8 | csharp            |                               beta                               |  ANTLR 4  |
 | [Go](https://go.dev)                                   |    1.17 | golang            |                               beta                               |  ANTLR 4  |
-| [Kotlin](https://kotlinlang.org)                       |  1.9.10 | kotlin            |                               beta (change in this branch)       |  ANTLR 4  | 
+| [Kotlin](https://kotlinlang.org)                       |  1.9.10 | kotlin            |              beta (change in branch Update-kotlin-version)       |  ANTLR 4  | 
 | [Python](https://www.python.org)                       |     3.6 | python3           |                              legacy                              |  ANTLR 4  |
 | [R](https://www.r-project.org/)                        |   3.5.0 | rlang             |                               beta                               |  ANTLR 4  |
 | [Rust](https://www.rust-lang.org/)                     |  1.60.0 | rust              |                               beta                               |  ANTLR 4  |
